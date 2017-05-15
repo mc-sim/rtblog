@@ -1,10 +1,15 @@
-{{ define "index" }}
+﻿{{ define "index" }}
 {{ template "header"}}
 
 <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-8 text-center"><h1>Изменный WORLD Hello</h1></div>
-    <div class="col-xs-2"></div>
+    <div id="joke" class="col-xs-2">тут будет шутка</div>
+    <script>
+        const ws = new WebSocket('ws://127.0.0.1:8083/');
+        const container = document.getElementById('joke');
+        ws.onmessage = (message) => { container.innerText = message.data; }
+    </script>
 </div>
 <div class="row">
     <div class="col-xs-2"></div>
